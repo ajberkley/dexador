@@ -1,32 +1,32 @@
-(in-package :cl-user)
-(defpackage dexador.util
-  (:use :cl)
-  (:import-from :fast-io
-                :with-fast-output
-                :fast-write-byte
-                :fast-write-sequence)
-  (:import-from :quri
-                :uri-path
-                :uri-query
-                :uri-host
-                :uri-port
-                :render-uri)
-  (:export :*default-connect-timeout*
-           :*default-read-timeout*
-           :*verbose*
-           :*not-verify-ssl*
-           :defun-speedy
-           :defun-careful
-           :octets
-           :ascii-string-to-octets
-           :+crlf+
-           :*default-user-agent*
-           :write-first-line
-           :write-header
-           :with-header-output
-           :write-connect-header
-           :make-random-string))
-(in-package :dexador.util)
+(in-package #:cl-user)
+(defpackage #:dexador.util
+  (:use #:cl)
+  (:import-from #:fast-io
+                #:with-fast-output
+                #:fast-write-byte
+                #:fast-write-sequence)
+  (:import-from #:quri
+                #:uri-path
+                #:uri-query
+                #:uri-host
+                #:uri-port
+                #:render-uri)
+  (:export #:*default-connect-timeout*
+           #:*default-read-timeout*
+           #:*verbose*
+           #:*not-verify-ssl*
+           #:defun-speedy
+           #:defun-careful
+           #:octets
+           #:ascii-string-to-octets
+           #:+crlf+
+           #:*default-user-agent*
+           #:write-first-line
+           #:write-header
+           #:with-header-output
+           #:write-connect-header
+           #:make-random-string))
+(in-package #:dexador.util)
 
 (defvar *default-connect-timeout* 10)
 (defvar *default-read-timeout* 10)

@@ -1,80 +1,79 @@
 (in-package :cl-user)
-(defpackage dexador.backend.usocket
+(defpackage #:dexador.backend.usocket
   (:nicknames :dex.usocket)
-  (:use :cl
-        :dexador.encoding
-        :dexador.util)
-  (:import-from :dexador.connection-cache
-                :steal-connection
-                :push-connection)
-  (:import-from :dexador.decoding-stream
-                :make-decoding-stream)
-  (:import-from :dexador.keep-alive-stream
-                :make-keep-alive-stream)
-  (:import-from :dexador.body
-                :decompress-body
-                :decode-body)
-  (:import-from :dexador.error
-                :http-request-failed
-                :http-request-not-found
-                :socks5-proxy-request-failed)
-  (:import-from :usocket
-                :socket-connect
-                :socket-stream)
-  (:import-from :fast-http
-                :make-http-response
-                :make-parser
-                :http-status
-                :http-headers)
-  (:import-from :fast-io
-                :make-output-buffer
-                :finish-output-buffer
-                :with-fast-output
-                :fast-write-sequence
-                :fast-write-byte)
-  (:import-from :chunga
-                :chunked-stream-input-chunking-p
-                :chunked-stream-output-chunking-p
-                :make-chunked-stream)
-  (:import-from :trivial-mimes
-                :mime)
-  (:import-from :cl-cookie
-                :merge-cookies
-                :parse-set-cookie-header
-                :cookie-jar-host-cookies
-                :write-cookie-header)
-  (:import-from :quri
-                :uri-p
-                :uri-host
-                :uri-port
-                :uri-path
-                :uri-authority
-                :uri-scheme
-                :url-encode
-                :url-encode-params
-                :merge-uris)
-  (:import-from :cl-base64
-                :string-to-base64-string)
+  (:use #:cl
+        #:dexador.encoding
+        #:dexador.util)
+  (:import-from #:dexador.connection-cache
+                #:steal-connection
+                #:push-connection)
+  (:import-from #:dexador.decoding-stream
+                #:make-decoding-stream)
+  (:import-from #:dexador.keep-alive-stream
+                #:make-keep-alive-stream)
+  (:import-from #:dexador.body
+                #:decompress-body
+                #:decode-body)
+  (:import-from #:dexador.error
+                #:http-request-failed
+                #:http-request-not-found
+                #:socks5-proxy-request-failed)
+  (:import-from #:usocket
+                #:socket-connect
+                #:socket-stream)
+  (:import-from #:fast-http
+                #:make-http-response
+                #:make-parser
+                #:http-status
+                #:http-headers)
+  (:import-from #:fast-io
+                #:make-output-buffer
+                #:finish-output-buffer
+                #:with-fast-output
+                #:fast-write-sequence
+                #:fast-write-byte)
+  (:import-from #:chunga
+                #:chunked-stream-input-chunking-p
+                #:chunked-stream-output-chunking-p
+                #:make-chunked-stream)
+  (:import-from #:trivial-mimes
+                #:mime)
+  (:import-from #:cl-cookie
+                #:merge-cookies
+                #:parse-set-cookie-header
+                #:cookie-jar-host-cookies
+                #:write-cookie-header)
+  (:import-from #:quri
+                #:uri-p
+                #:uri-host
+                #:uri-port
+                #:uri-path
+                #:uri-authority
+                #:uri-scheme
+                #:url-encode
+                #:url-encode-params
+                #:merge-uris)
+  (:import-from #:cl-base64
+                #:string-to-base64-string)
   #-(or windows dexador-no-ssl)
-  (:import-from :cl+ssl
-                :with-global-context
-                :make-context
-                :make-ssl-client-stream
-                :ensure-initialized
-                :ssl-check-verify-p)
-  (:import-from :alexandria
-                :copy-stream
-                :if-let
-                :when-let
-                :ensure-list
-                :ends-with-subseq)
-  (:import-from :uiop)
-  (:export :request
-
+  (:import-from #:cl+ssl
+                #:with-global-context
+                #:make-context
+                #:make-ssl-client-stream
+                #:ensure-initialized
+                #:ssl-check-verify-p)
+  (:import-from #:alexandria
+                #:copy-stream
+                #:if-let
+                #:when-let
+                #:ensure-list
+                #:ends-with-subseq)
+  (:import-from #:uiop)
+  (:export #:request
            ;; Restarts
-           :retry-request
-           :ignore-and-continue))
-(in-package :dexador.backend.usocket)
+           #:retry-request
+           #:ignore-and-continue))
+(in-package #:dexador.backend.usocket)
 
 (defparameter *ca-bundle*
   (uiop:native-namestring

@@ -1,46 +1,46 @@
-(in-package :cl-user)
-(uiop:define-package dexador
-  (:nicknames :dex)
-  (:use :cl
+(in-package #:cl-user)
+(uiop:define-package #:dexador
+  (:nicknames #:dex)
+  (:use #:cl
         #-windows #:dexador.backend.usocket
         #+windows #:dexador.backend.winhttp)
-  (:shadow :get
-           :delete)
-  (:import-from :dexador.connection-cache
-                :*connection-pool*
-                :*use-connection-pool*
-                :make-connection-pool
-                :clear-connection-pool)
-  (:import-from :dexador.util
-                :*default-connect-timeout*
-                :*default-read-timeout*
-                :*verbose*
-                :*not-verify-ssl*)
-  (:import-from :alexandria
-                :copy-stream
-                :remove-from-plist)
-  (:export :request
-           :get
-           :post
-           :head
-           :put
-           :patch
-           :delete
-           :fetch
-           :*default-connect-timeout*
-           :*default-read-timeout*
-           :*verbose*
-           :*not-verify-ssl*
-           :*connection-pool*
-           :*use-connection-pool*
-           :make-connection-pool
-           :clear-connection-pool
+  (:shadow #:get
+           #:delete)
+  (:import-from #:dexador.connection-cache
+                #:*connection-pool*
+                #:*use-connection-pool*
+                #:make-connection-pool
+                #:clear-connection-pool)
+  (:import-from #:dexador.util
+                #:*default-connect-timeout*
+                #:*default-read-timeout*
+                #:*verbose*
+                #:*not-verify-ssl*)
+  (:import-from #:alexandria
+                #:copy-stream
+                #:remove-from-plist)
+  (:export #:request
+           #:get
+           #:post
+           #:head
+           #:put
+           #:patch
+           #:delete
+           #:fetch
+           #:*default-connect-timeout*
+           #:*default-read-timeout*
+           #:*verbose*
+           #:*not-verify-ssl*
+           #:*connection-pool*
+           #:*use-connection-pool*
+           #:make-connection-pool
+           #:clear-connection-pool
 
            ;; Restarts
-           :retry-request
-           :ignore-and-continue)
-  (:use-reexport :dexador.error))
-(in-package :dexador)
+           #:retry-request
+           #:ignore-and-continue)
+  (:use-reexport #:dexador.error))
+(in-package #:dexador)
 
 (defun get (uri &rest args
             &key version headers basic-auth cookie-jar keep-alive use-connection-pool connect-timeout read-timeout max-redirects

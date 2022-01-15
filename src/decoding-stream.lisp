@@ -1,26 +1,26 @@
-(in-package :cl-user)
-(defpackage dexador.decoding-stream
-  (:use :cl)
-  (:import-from :trivial-gray-streams
-                :fundamental-character-input-stream
-                :stream-read-char
-                :stream-unread-char
-                :stream-read-byte
-                :stream-read-sequence)
-  (:import-from :babel
-                :*string-vector-mappings*
-                :unicode-char)
-  (:import-from :babel-encodings
-                :*default-character-encoding*
-                :get-character-encoding
-                :code-point-counter
-                :enc-max-units-per-char
-                :lookup-mapping)
-  (:export :make-decoding-stream
-           :decoding-stream)
+(in-package #:cl-user)
+(defpackage #:dexador.decoding-stream
+  (:use #:cl)
+  (:import-from #:trivial-gray-streams
+                #:fundamental-character-input-stream
+                #:stream-read-char
+                #:stream-unread-char
+                #:stream-read-byte
+                #:stream-read-sequence)
+  (:import-from #:babel
+                #:*string-vector-mappings*
+                #:unicode-char)
+  (:import-from #:babel-encodings
+                #:*default-character-encoding*
+                #:get-character-encoding
+                #:code-point-counter
+                #:enc-max-units-per-char
+                #:lookup-mapping)
+  (:export #:make-decoding-stream
+           #:decoding-stream)
   (:documentation "Provides character decoding stream.
 Similar to flexi-input-stream, except this uses Babel for decoding."))
-(in-package :dexador.decoding-stream)
+(in-package #:dexador.decoding-stream)
 
 (declaim (type fixnum +buffer-size+))
 (eval-when (:compile-toplevel :load-toplevel :execute)

@@ -12,8 +12,8 @@
                 #:character-decoding-error)
   (:import-from #:babel-encodings
                 #:*suppress-character-coding-errors*)
-  (:import-from :trivial-mimes
-                :mime)
+  (:import-from #:trivial-mimes
+                #:mime)
   (:import-from #:quri
                 #:url-encode)
   (:import-from #:chipz

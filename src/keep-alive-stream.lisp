@@ -1,20 +1,20 @@
-(in-package :cl-user)
-(defpackage dexador.keep-alive-stream
-  (:use :cl)
-  (:import-from :trivial-gray-streams
-                :fundamental-input-stream
-                :stream-read-byte
-                :stream-read-sequence
-                :stream-element-type
-                :open-stream-p)
-  (:import-from :alexandria
-                :xor)
-  (:export :make-keep-alive-stream
-           :keep-alive-stream
-           :keep-alive-chunked-stream
-   :keep-alive-stream-close-underlying-stream
-   :keep-alive-stream-stream))
-(in-package :dexador.keep-alive-stream)
+(in-package #:cl-user)
+(defpackage #:dexador.keep-alive-stream
+  (:use #:cl)
+  (:import-from #:trivial-gray-streams
+                #:fundamental-input-stream
+                #:stream-read-byte
+                #:stream-read-sequence
+                #:stream-element-type
+                #:open-stream-p)
+  (:import-from #:alexandria
+                #:xor)
+  (:export #:make-keep-alive-stream
+           #:keep-alive-stream
+           #:keep-alive-chunked-stream
+           #:keep-alive-stream-close-underlying-stream
+           #:keep-alive-stream-stream))
+(in-package #:dexador.keep-alive-stream)
 
 (defclass keep-alive-stream (fundamental-input-stream)
   ((stream :type stream

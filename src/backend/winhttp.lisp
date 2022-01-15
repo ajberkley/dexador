@@ -30,11 +30,11 @@
                 #:when-let)
   (:import-from #:split-sequence
                 #:split-sequence)
-  (:export :request
+  (:export #:request
 
            ;; Restarts
-           :retry-request
-           :ignore-and-continue))
+           #:retry-request
+           #:ignore-and-continue))
 (in-package #:dexador.backend.winhttp)
 
 (defconstant +WINHTTP_OPTION_DISABLE_FEATURE+ 63)

@@ -1,13 +1,13 @@
-(in-package :cl-user)
-(defpackage dexador.encoding
-  (:use :cl)
-  (:import-from :babel
-                :list-character-encodings
-                :*default-character-encoding*)
-  (:import-from :ppcre
-                :scan-to-strings)
-  (:export :detect-charset))
-(in-package :dexador.encoding)
+(in-package #:cl-user)
+(defpackage #:dexador.encoding
+  (:use #:cl)
+  (:import-from #:babel
+                #:list-character-encodings
+                #:*default-character-encoding*)
+  (:import-from #:ppcre
+                #:scan-to-strings)
+  (:export #:detect-charset))
+(in-package #:dexador.encoding)
 
 (defun parse-content-type (content-type)
   (let ((types

@@ -1,51 +1,51 @@
-(in-package :cl-user)
-(defpackage dexador.error
-  (:use :cl)
-  (:import-from :quri
-                :render-uri)
-  (:export :http-request-failed
+(in-package #:cl-user)
+(defpackage #:dexador.error
+  (:use #:cl)
+  (:import-from #:quri
+                #:render-uri)
+  (:export #:http-request-failed
 
            ;; 4xx
-           :http-request-bad-request
-           :http-request-unauthorized
-           :http-request-payment-required
-           :http-request-forbidden
-           :http-request-not-found
-           :http-request-method-not-allowed
-           :http-request-not-acceptable
-           :http-request-proxy-authentication-required
-           :http-request-request-timeout
-           :http-request-conflict
-           :http-request-gone
-           :http-request-length-required
-           :http-request-precondition-failed
-           :http-request-payload-too-large
-           :http-request-uri-too-long
-           :http-request-unsupported-media-type
-           :http-request-range-not-satisfiable
-           :http-request-expectation-failed
-           :http-request-misdirected-request
-           :http-request-upgrade-required
-           :http-request-too-many-requests
+           #:http-request-bad-request
+           #:http-request-unauthorized
+           #:http-request-payment-required
+           #:http-request-forbidden
+           #:http-request-not-found
+           #:http-request-method-not-allowed
+           #:http-request-not-acceptable
+           #:http-request-proxy-authentication-required
+           #:http-request-request-timeout
+           #:http-request-conflict
+           #:http-request-gone
+           #:http-request-length-required
+           #:http-request-precondition-failed
+           #:http-request-payload-too-large
+           #:http-request-uri-too-long
+           #:http-request-unsupported-media-type
+           #:http-request-range-not-satisfiable
+           #:http-request-expectation-failed
+           #:http-request-misdirected-request
+           #:http-request-upgrade-required
+           #:http-request-too-many-requests
 
            ;; 5xx
-           :http-request-internal-server-error
-           :http-request-not-implemented
-           :http-request-bad-gateway
-           :http-request-service-unavailable
-           :http-request-gateway-timeout
-           :http-request-http-version-not-supported
+           #:http-request-internal-server-error
+           #:http-request-not-implemented
+           #:http-request-bad-gateway
+           #:http-request-service-unavailable
+           #:http-request-gateway-timeout
+           #:http-request-http-version-not-supported
 
            ;; accessors
-           :response-body
-           :response-status
-           :response-headers
-           :request-uri
-           :request-method
+           #:response-body
+           #:response-status
+           #:response-headers
+           #:request-uri
+           #:request-method
 
            ;; Proxy errors
-           :socks5-proxy-request-failed))
-(in-package :dexador.error)
+           #:socks5-proxy-request-failed))
+(in-package #:dexador.error)
 
 (define-condition http-request-failed (error)
   ((body :initarg :body

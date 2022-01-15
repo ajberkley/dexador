@@ -1,17 +1,17 @@
-(in-package :cl-user)
-(defpackage dexador.connection-cache
-  (:use :cl)
-  (:import-from :bordeaux-threads
-                :make-lock
-                :with-lock-held)
-  (:export :*connection-pool*
-   :*use-connection-pool*
-           :*max-active-connections*
-           :make-connection-pool
-           :steal-connection
-           :push-connection
-           :clear-connection-pool))
-(in-package :dexador.connection-cache)
+(in-package #:cl-user)
+(defpackage #:dexador.connection-cache
+  (:use #:cl)
+  (:import-from #:bordeaux-threads
+                #:make-lock
+                #:with-lock-held)
+  (:export #:*connection-pool*
+           #:*use-connection-pool*
+           #:*max-active-connections*
+           #:make-connection-pool
+           #:steal-connection
+           #:push-connection
+           #:clear-connection-pool))
+(in-package #:dexador.connection-cache)
 
 (defvar *use-connection-pool* t)
 (defvar *max-active-connections* 8
